@@ -20,7 +20,7 @@ export async function POST(request: NextRequest) {
             return NextResponse.json({ error: 'An account with this email already exists' }, { status: 409 });
         }
 
-        // Create customer record
+        // Create customer record (using SCOPE_IDENTITY due to table triggers)
         const insertResult = await pool.request()
             .input('Name', sql.VarChar, CustomerName)
             .input('Phone', sql.VarChar, PhoneNumber)
@@ -29,8 +29,8 @@ export async function POST(request: NextRequest) {
             .input('Status', sql.VarChar, 'Active')
             .query`
                 INSERT INTO CUSTOMER (CustomerName, PhoneNumber, DOB, Email, Status, StartDate)
-                OUTPUT INSERTED.CustomerID
-                VALUES (@Name, @Phone, @DOB, @Email, @Status, GETDATE())
+                VALUES (@Name, @Phone, @DOB, @Email, @Status, GETDATE());
+                SELECT @@IDENTITY AS CustomerID;
             `;
 
         const newCustomerId = insertResult.recordset[0].CustomerID;
