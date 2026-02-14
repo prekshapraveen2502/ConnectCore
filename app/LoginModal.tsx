@@ -27,6 +27,7 @@ export default function LoginModal({ onLoginSuccess }: LoginModalProps) {
 
     // Forgot password fields
     const [forgotEmail, setForgotEmail] = useState('');
+    const [debugLink, setDebugLink] = useState<string | null>(null);
 
     const clearForm = () => {
         setUsername('');
@@ -37,6 +38,7 @@ export default function LoginModal({ onLoginSuccess }: LoginModalProps) {
         setSignupEmail('');
         setSignupPassword('');
         setForgotEmail('');
+        setDebugLink(null);
         setError('');
         setSuccess('');
     };
@@ -119,6 +121,7 @@ export default function LoginModal({ onLoginSuccess }: LoginModalProps) {
         e.preventDefault();
         setError('');
         setSuccess('');
+        setDebugLink(null);
         setLoading(true);
 
         try {
@@ -132,6 +135,11 @@ export default function LoginModal({ onLoginSuccess }: LoginModalProps) {
 
             if (res.ok) {
                 setSuccess(data.message);
+                // If backend sent a debug link (dev mode only), save it to state
+                if (data.debugLink) {
+                    console.log('Debug Link:', data.debugLink);
+                    setDebugLink(data.debugLink);
+                }
             } else {
                 setError(data.error || 'Failed to send reset email');
             }
@@ -181,7 +189,25 @@ export default function LoginModal({ onLoginSuccess }: LoginModalProps) {
                 )}
 
                 {error && <div className={styles.errorBox}>{error}</div>}
-                {success && <div className={styles.successBox}>{success}</div>}
+
+                {success && (
+                    <div className={styles.successBox}>
+                        {success}
+                        {debugLink && (
+                            <div style={{ marginTop: '10px', padding: '8px', background: 'rgba(0,0,0,0.2)', borderRadius: '4px' }}>
+                                <p style={{ fontSize: '0.8rem', marginBottom: '4px' }}>Development Mode Only:</p>
+                                <a
+                                    href={debugLink}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    style={{ color: '#fff', textDecoration: 'underline', fontWeight: 'bold' }}
+                                >
+                                    Open Reset Password Link
+                                </a>
+                            </div>
+                        )}
+                    </div>
+                )}
 
                 {/* ========== LOGIN VIEW ========== */}
                 {view === 'login' && (

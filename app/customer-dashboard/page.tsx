@@ -163,8 +163,23 @@ export default function CustomerDashboard() {
 
     const formatDate = (dateStr: string) => {
         if (!dateStr) return '—';
+        // Check if dateStr is in YYYY-MM-DD format (typical SQL date)
+        // If so, parse it manually to avoid timezone shifting
+        if (dateStr.match(/^\d{4}-\d{2}-\d{2}$/)) {
+            const [year, month, day] = dateStr.split('-').map(Number);
+            // Create date in UTC midday to be safe from any TZ shifts
+            // Month is 0-indexed in JS Date
+            const date = new Date(Date.UTC(year, month - 1, day, 12, 0, 0));
+            return date.toLocaleDateString('en-US', {
+                year: 'numeric', month: 'short', day: 'numeric',
+                timeZone: 'UTC'
+            });
+        }
+
+        // Fallback for full ISO strings or checks
         return new Date(dateStr).toLocaleDateString('en-US', {
-            year: 'numeric', month: 'short', day: 'numeric'
+            year: 'numeric', month: 'short', day: 'numeric',
+            timeZone: 'UTC'
         });
     };
 

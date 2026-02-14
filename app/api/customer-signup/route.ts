@@ -4,6 +4,7 @@ import { getConnection, sql } from '../../../lib/db';
 export async function POST(request: NextRequest) {
     try {
         const { CustomerName, PhoneNumber, DOB, Email, Password } = await request.json();
+        console.log(`[Signup] Received DOB: ${DOB}`);
 
         if (!CustomerName || !PhoneNumber || !DOB || !Email || !Password) {
             return NextResponse.json({ error: 'All fields are required' }, { status: 400 });
