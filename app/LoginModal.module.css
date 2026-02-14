@@ -1,0 +1,157 @@
+/* ========================================
+   LoginModal Styles
+   ======================================== */
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.modalCard {
+    width: 400px;
+    padding: 40px;
+    background: rgba(30, 41, 59, 0.9);
+    border: 1px solid var(--card-border);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 30px;
+    color: white;
+}
+
+.titleAccent {
+    color: var(--accent-color);
+}
+
+.toggleContainer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+.toggleButton {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s ease;
+}
+
+.toggleButtonInactive {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.toggleButtonActive {
+    background: var(--accent-color);
+    color: black;
+}
+
+.errorBox {
+    background: rgba(255, 99, 71, 0.2);
+    color: #ff6347;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text-secondary);
+}
+
+.input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid var(--card-border);
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+}
+
+.input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+}
+
+.submitButton {
+    margin-top: 10px;
+    padding: 12px;
+    border-radius: 8px;
+    background: var(--accent-color);
+    color: black;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: opacity 0.2s ease;
+}
+
+.submitButton:disabled {
+    background: #555;
+    cursor: not-allowed;
+}
+
+.submitButton:hover:not(:disabled) {
+    opacity: 0.9;
+}
+
+.successBox {
+    background: rgba(16, 185, 129, 0.2);
+    color: #10b981;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.linksContainer {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.linkButton {
+    background: none;
+    border: none;
+    color: var(--accent-color);
+    cursor: pointer;
+    font-size: 0.85rem;
+    padding: 0;
+    text-decoration: underline;
+    transition: opacity 0.2s ease;
+}
+
+.linkButton:hover {
+    opacity: 0.8;
+}
+
+.helperText {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    text-align: center;
+    margin: 0 0 10px 0;
+    line-height: 1.5;
+}

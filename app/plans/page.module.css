@@ -1,0 +1,148 @@
+/* ========================================
+   Plans Page Styles
+   ======================================== */
+
+.pageHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.backLink {
+    margin-top: 20px;
+    display: inline-block;
+    color: var(--accent-color);
+}
+
+.addButton {
+    padding: 12px 24px;
+    font-size: 1rem;
+}
+
+.planCard {
+    position: relative;
+}
+
+.planCardPostpaid {
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.1) 0%, rgba(56, 189, 248, 0.05) 100%);
+    border-left: 4px solid #38bdf8;
+}
+
+.planCardPrepaid {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(139, 92, 246, 0.05) 100%);
+    border-left: 4px solid #8b5cf6;
+}
+
+.cardActions {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    display: flex;
+    gap: 8px;
+}
+
+.editButton {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.editButton:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.deleteButton {
+    background: rgba(239, 68, 68, 0.2);
+    border: 1px solid rgba(239, 68, 68, 0.5);
+    color: #ef4444;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.deleteButton:hover {
+    background: rgba(239, 68, 68, 0.3);
+}
+
+.cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 15px;
+}
+
+.planName {
+    margin: 0;
+    font-size: 1.4rem;
+    color: white;
+    font-weight: 700;
+    padding-right: 100px;
+}
+
+.planTypeBadge {
+    display: inline-block;
+    margin-bottom: 15px;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.badgePostpaid {
+    background: rgba(56, 189, 248, 0.2);
+    color: #38bdf8;
+}
+
+.badgePrepaid {
+    background: rgba(139, 92, 246, 0.2);
+    color: #8b5cf6;
+}
+
+.planDescription {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    min-height: 60px;
+}
+
+.dataSection {
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dataLabel {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+}
+
+.dataValue {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+}
+
+.emptyMessage {
+    text-align: center;
+    padding: 40px;
+    color: var(--text-secondary);
+}
+
+.loadingText {
+    color: white;
+    text-align: center;
+    padding: 40px;
+}
+
+.errorText {
+    color: red;
+    text-align: center;
+    padding: 40px;
+}

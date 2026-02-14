@@ -1,0 +1,155 @@
+/* ========================================
+   Customers Page Styles
+   ======================================== */
+
+.pageHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.backLink {
+    margin-top: 10px;
+    display: inline-block;
+    color: var(--accent-color);
+}
+
+.addButton {
+    padding: 12px 24px;
+    font-size: 1rem;
+}
+
+.filterContainer {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.searchInput {
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid var(--card-border);
+    background: var(--card-bg);
+    color: white;
+    flex: 1;
+}
+
+.searchInput:focus {
+    outline: none;
+    border-color: var(--accent-color);
+}
+
+.statusSelect {
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid var(--card-border);
+    background: var(--card-bg);
+    color: white;
+    min-width: 150px;
+}
+
+.loadingText {
+    text-align: center;
+    padding: 20px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    color: var(--text-primary);
+}
+
+.tableHeaderRow {
+    border-bottom: 1px solid var(--card-border);
+    text-align: left;
+}
+
+.tableCell {
+    padding: 15px;
+}
+
+.tableCellRight {
+    padding: 15px;
+    text-align: right;
+}
+
+.tableRow {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.customerName {
+    font-weight: bold;
+}
+
+.customerPhone {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    font-weight: normal;
+}
+
+.ageText {
+    margin-left: 8px;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+}
+
+.statusBadge {
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.85rem;
+}
+
+.statusActive {
+    background: rgba(56, 189, 248, 0.2);
+    color: #38bdf8;
+}
+
+.statusInactive {
+    background: rgba(255, 99, 71, 0.2);
+    color: #ff6347;
+}
+
+.actionsCell {
+    padding: 15px;
+    text-align: right;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.editButton {
+    padding: 5px 15px;
+    font-size: 0.85rem;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.editButton:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.toggleButton {
+    padding: 5px 15px;
+    font-size: 0.85rem;
+    background: transparent;
+    border: 1px solid var(--card-border);
+    color: var(--text-secondary);
+    min-width: 100px;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.toggleButton:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.emptyMessage {
+    text-align: center;
+    padding: 40px;
+    color: var(--text-secondary);
+}
