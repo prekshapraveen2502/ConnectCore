@@ -119,7 +119,7 @@ export default function Home() {
                     {/* Centered title */}
                     <div className={styles.headerTitleWrapper}>
                         <h1 className={styles.headerTitle}>
-                            Telecom<span> Management</span> Portal
+                            <span> Telecore</span>
                         </h1>
                         <p className={styles.headerSubtitle}>
                             Manage your telecom operations efficiently

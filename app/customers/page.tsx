@@ -88,6 +88,11 @@ export default function CustomersPage() {
     };
 
     const toggleStatus = async (customer: Customer) => {
+        if (customer.Status === 'Active') {
+            const confirmed = window.confirm(`Are you sure you want to deactivate ${customer.CustomerName}?`);
+            if (!confirmed) return;
+        }
+
         const newStatus = customer.Status === 'Active' ? 'Inactive' : 'Active';
         await handleSave({ ...customer, Status: newStatus });
     };

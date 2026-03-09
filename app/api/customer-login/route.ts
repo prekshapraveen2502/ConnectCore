@@ -20,6 +20,15 @@ export async function POST(request: NextRequest) {
         if (result.recordset.length > 0) {
             const customerId = result.recordset[0].CustomerID;
 
+            // Check if the customer is active
+            const statusResult = await pool.request()
+                .input('CheckID', sql.Int, customerId)
+                .query('SELECT Status FROM CUSTOMER WHERE CustomerID = @CheckID');
+
+            if (statusResult.recordset.length > 0 && statusResult.recordset[0].Status === 'Inactive') {
+                return NextResponse.json({ error: 'the account was deactivated by admin' }, { status: 403 });
+            }
+
             const response = NextResponse.json({ success: true, customerId });
 
             // Set session cookie for customer
