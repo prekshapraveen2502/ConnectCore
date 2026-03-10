@@ -1,36 +1,100 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Telecore - Telecom Management Portal
 
-## Getting Started
+**Telecore** is a robust, full-stack Next.js web application designed to efficiently manage telecom operations. Built for both administrative and customer-facing activities, it provides a comprehensive suite of tools ranging from managing user accounts to tracking subscriptions, browsing telecom plans, processing payments, and enforcing rigorous data security and authentication protocols.
 
-First, run the development server:
+---
+
+## 🚀 Key Features
+
+### 1. **Robust Dual-Role Authentication**
+Telecore supports two distinct login roles with varying levels of access:
+- **Admin Accounts:** Full access to manage plans, oversee billing operations, and administer customer profiles.
+- **Customer Accounts:** A dedicated dashboard allowing existing users to view their subscriptions, browse current options, upgrade plans, and pay pending bills. This also includes fully-featured signup and password recovery mechanisms for secure access.
+
+### 2. **Comprehensive Customer Management**
+Admins have granular control over the telecom customer base, enabling them to:
+- Instantly browse, search, and filter customers.
+- Create and update detailed user profiles natively in the UI.
+- Securely activate or deactivate customer accounts directly from the portal, preventing unauthorized login access for inactive accounts.
+
+### 3. **Plan and Subscription Workflows**
+- **Plan Catalog:** Categorize available telecommunication plans into intuitive classes (e.g., Prepaid, Postpaid, Business). 
+- **Plan Administration:** Add brand new telecom plans or edit active ones directly from the administrative backend.
+- **Seamless Upgrades:** Customers can seamlessly navigate their portal to view recommended upgrades and quickly adopt new data or talk-time allowances.
+
+### 4. **Billing and Payment Gateways**
+- Both Admins and Customers have deep visibility into outstanding statements and fully resolved payment histories. 
+- A streamlined UI for tracking new invoices and processing pending payments safely.
+
+---
+
+## 🛠 Tech Stack
+
+- **Frontend:** Next.js (App Router), React, Vanilla CSS Modules (providing a dynamic, highly responsive UI with interactive modals, glassmorphism, and color-coded status badges). 
+- **Backend:** Next.js Route Handlers (NextJS API handling secure POST, GET, and PUT requests).
+- **Database:** Microsoft SQL Server (MSSQL), deeply integrated using raw SQL queries and highly optimized Stored Procedures.
+- **Language:** TypeScript across the entire stack for reliable type safety.
+
+---
+
+## 🗃️ Database Architecture & Setup
+
+This application relies on a strictly typed relational database model designed in MSSQL. Our data access patterns prioritize performance and security by leveraging stored procedures and encrypted columns.
+
+All SQL definitions and seed scripts are located within the `/sql` directory:
+
+1. **`00_encryption_setup.sql`** – Initializes secure symmetric keys and certificates required to locally encrypt sensitive columns like account passwords.
+2. **`01_create_tables.sql`** – Establishes the relational schema. Primary tables include:
+   - `CUSTOMER` (users, contact info, statuses).
+   - `PLAN_DETAILS` (data limits, pricing, descriptions).
+   - `SUBSCRIPTION` (a bridging table linking a customer, their active plan, and start/expiry dates).
+   - `BILLING_AND_PAYMENT` (invoice generation, payment totals, resolutions mapping back to subscriptions).
+3. **`02_stored_procedures.sql`** – Bootstraps secure functions. Crucial examples include `sp_ValidateAdminLogin`, `sp_ValidateCustomerLogin`, `sp_SignupCustomer`, and `sp_CreateOrUpdatePlan`. This is the primary API interface between Next.js and MSSQL.
+4. **`03_seed_data.sql`** – Populates dummy statistics, sample telecom customers, base plans, and administrative login credentials for immediate local testing.
+
+---
+
+## 🖥 Environment Configuration
+
+To communicate securely with the database, copy your environment variables into `.env.local` located at the root of the standard Next.js directory.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Example .env.local configuration:
+DB_USER=sa
+DB_PASSWORD=YourSecurePassword123!
+DB_SERVER=localhost
+DB_NAME=TelecomDB
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🏃 Getting Started
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Start developing globally using the `npm` package manager. 
 
-## Learn More
+1. **Clone the repository** and change directory into the root:
+   ```bash
+   cd telecom-app
+   ```
+2. **Install all dependencies:**
+   ```bash
+   npm install 
+   # Ensures all underlying Next.js, MSSQL, and mailing libraries are resolved
+   ```
+3. **Run the development server natively:**
+   ```bash
+   npm run dev
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+You can now open [http://localhost:3000](http://localhost:3000) inside your web browser. 
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+*Note: The default Admin password generated by the initial SQL seed file should be verified prior to attempting to authenticate successfully on the portal login modal.*
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 📈 Recent Iterations & Workflows
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Recent continuous-integration updates have successfully formalized features including:
+- **Admin Controls:** Successfully implemented strict `window.confirm` UI protocols to safeguard against accidental changes when an admin attempts to deactivate a customer.
+- **Enhanced Data Sanitization:** Overhauled the customer APIs to actively check the underlying `Customer.Status` dynamically. "Inactive" customers are explicitly restricted from the customer dashboard and served an accurate, frontend error-message explaining why. 
+- **Modular Refactoring:** Transitioned standalone API endpoints into strongly typed components utilizing reusable custom hooks for handling cross-page routing natively.
