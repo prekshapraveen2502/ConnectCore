@@ -4,7 +4,7 @@
 
 ---
 
-## 🚀 Key Features
+## Key Features
 
 ### 1. **Robust Dual-Role Authentication**
 Telecore supports two distinct login roles with varying levels of access:
@@ -28,7 +28,7 @@ Admins have granular control over the telecom customer base, enabling them to:
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 
 - **Frontend:** Next.js (App Router), React, Vanilla CSS Modules (providing a dynamic, highly responsive UI with interactive modals, glassmorphism, and color-coded status badges). 
 - **Backend:** Next.js Route Handlers (NextJS API handling secure POST, GET, and PUT requests).
@@ -37,7 +37,7 @@ Admins have granular control over the telecom customer base, enabling them to:
 
 ---
 
-## 🗃️ Database Architecture & Setup
+## Database Architecture & Setup
 
 This application relies on a strictly typed relational database model designed in MSSQL. Our data access patterns prioritize performance and security by leveraging stored procedures and encrypted columns.
 
@@ -54,7 +54,7 @@ All SQL definitions and seed scripts are located within the `/sql` directory:
 
 ---
 
-## 🖥 Environment Configuration
+## Environment Configuration
 
 To communicate securely with the database, copy your environment variables into `.env.local` located at the root of the standard Next.js directory.
 
@@ -68,7 +68,7 @@ DB_NAME=TelecomDB
 
 ---
 
-## 🏃 Getting Started
+## Getting Started
 
 Start developing globally using the `npm` package manager. 
 
@@ -92,7 +92,7 @@ You can now open [http://localhost:3000](http://localhost:3000) inside your web 
 
 ---
 
-## 📈 Recent Iterations & Workflows
+## Recent Iterations & Workflows
 
 Recent continuous-integration updates have successfully formalized features including:
 - **Admin Controls:** Successfully implemented strict `window.confirm` UI protocols to safeguard against accidental changes when an admin attempts to deactivate a customer.
