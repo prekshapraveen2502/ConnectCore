@@ -1,13 +1,13 @@
-# Telecore - Telecom Management Portal
+# ConnectCore - Telecom Management Portal
 
-**Telecore** is a robust, full-stack Next.js web application designed to efficiently manage telecom operations. Built for both administrative and customer-facing activities, it provides a comprehensive suite of tools ranging from managing user accounts to tracking subscriptions, browsing telecom plans, processing payments, and enforcing rigorous data security and authentication protocols.
+**ConnectCore** is a robust, full-stack Next.js web application designed to efficiently manage telecom operations. Built for both administrative and customer-facing activities, it provides a comprehensive suite of tools ranging from managing user accounts to tracking subscriptions, browsing telecom plans, processing payments, and enforcing rigorous data security and authentication protocols.
 
 ---
 
 ## Key Features
 
 ### 1. **Robust Dual-Role Authentication**
-Telecore supports two distinct login roles with varying levels of access:
+ConnectCore supports two distinct login roles with varying levels of access:
 - **Admin Accounts:** Full access to manage plans, oversee billing operations, and administer customer profiles.
 - **Customer Accounts:** A dedicated dashboard allowing existing users to view their subscriptions, browse current options, upgrade plans, and pay pending bills. This also includes fully-featured signup and password recovery mechanisms for secure access.
 
